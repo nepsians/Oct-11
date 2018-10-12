@@ -1,11 +1,14 @@
 package com.gameconnect3.ujjwal.firebasedemo;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +31,7 @@ public class ButtomClass extends Fragment {
 
     EditText Username,Password;
     Button LoginBtn;
+    ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -92,7 +96,13 @@ public class ButtomClass extends Fragment {
             public void onResponse(String response) {
                 if (response.trim().equals("Success")){
                     SharedPrefManager.getInstance(getContext()).login_status(true);
+
+                    progressDialog=new ProgressDialog(getContext());
+                    progressDialog.setMessage("Login In...");
+                    progressDialog.show();
+
                     NextActivity();
+                    //progressDialog.cancel();
                     Toast.makeText(getActivity(), "Login Successfully!", Toast.LENGTH_SHORT).show();
                     SharedPrefManager.getInstance(getContext()).User_Login(true);
                 }else{
@@ -121,7 +131,11 @@ public class ButtomClass extends Fragment {
 
     public void NextActivity(){
         Intent intent=new Intent(getActivity(),SecondMainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+
+
 
 }

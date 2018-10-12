@@ -8,14 +8,27 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:background="@color/MainBackground">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_gravity="right"
-        android:textSize="20dp"
-        android:background="@color/lightbluecolor"
-        android:id="@+id/logout"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="209dp"
+            android:layout_height="wrap_content"
+            android:background="@color/topContainer"
+            android:text=" Message Log"
+            android:textSize="32dp" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/lightbluecolor"
+            android:text="Logout"
+            android:textSize="20dp" />
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/LogContainer"
